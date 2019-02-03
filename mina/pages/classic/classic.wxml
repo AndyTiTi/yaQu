@@ -1,0 +1,18 @@
+<view class="container">
+    <view class="header">
+        <v-epsoide class="epsoide" index="{{classic.index}}"/>
+        <!--bind:like是自定义事件写法 onLike监听函数写在 ./classic.js中-->
+        <view class="like-container">
+            <v-like bind:like="onLike" class="like" like="{{likeStatus}}" count="{{likeCount}}"/>
+            <v-button class="share-btn" open-type="share">
+                <image class="share" slot="img" src="/images/icon/share.png"/>
+            </v-button>
+        </view>
+    </view>
+    <!--hidden对于自定义组件会失效，但是如果把hidden属性加在根元素的view上，则会生效。所以需要将hidden传递到组建内部的根元素上-->
+    <v-movie hidden="{{classic.type!=100}}" img="{{classic.image}}" content="{{classic.content}}"/>
+    <v-music wx:if="{{classic.type==200}}" img="{{classic.image}}" content="{{classic.content}}" src="{{classic.url}}" title="{{classic.title}}"/>
+    <v-essay hidden="{{classic.type!=300}}" img="{{classic.image}}" content="{{classic.content}}"/>
+    <v-navi bind:left="onNext" bind:right="onPrevious" title="{{classic.title}}" first="{{first}}" latest="{{latest}}"
+            class="navi"/>
+</view>

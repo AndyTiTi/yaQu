@@ -1,0 +1,7 @@
+*.pyc
+.vscode
+.idea/
+mina/.idea/
+Pipfile.lock
+project.config.json
+node_modules
